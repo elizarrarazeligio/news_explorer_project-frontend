@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background-primary: #ffffff;
+  --background-secondary: #f5f6f7;
+
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-tertiary: #2f71e5;
+  --color-extra: #b6bcbf;
+
+  --button-primary: #2f71e5;
+  --button-primary-hover: #347eff;
+  --button-secondary: #ffffff;
+  --button-secondary-hover: #e8e8e8;
+
+  --font-size-xxsmall: 0.75em; /* 12px */
+  --font-size-xsmall: 0.875em; /* 14px */
+  --font-size-small: 1em; /* 16px */
+  --font-size-neutral: 1.125em; /* 18px */
+  --font-size-medium: 1.25em; /* 20px */
+  --font-size-large: 1.625em; /* 26px */
+  --font-size-xlarge: 2.5em; /* 40px */
+  --font-size-xxlarge: 3.75em; /* 60px */
+
+  --font-size-extra-1: 1.375em; /* 22px */
+  --font-size-extra-2: 1.5em; /* 24px */
+  --font-size-extra-3: 1.875em; /* 30px */
+  --font-size-extra-4: 2em; /* 32px */
+  --font-size-extra-5: 2.25em; /* 36px */
+
+  --line-height-xxsmall: 1.067;
+  --line-height-xsmall: 1.1;
+  --line-height-small: 1.15;
+  --line-height-neutral: 1.2;
+  --line-height-medium: 1.25;
+  --line-height-large: 1.333;
+  --line-height-xlarge: 1.375;
+  --line-height-xxlarge: 1.5;
+  --line-height-extra: 1.714;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 576px auto 624px 80px;
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    grid-template-rows: 400px auto 354px 64px;
+  }
+}

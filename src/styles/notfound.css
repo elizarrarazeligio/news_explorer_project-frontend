@@ -1,0 +1,21 @@
+@import url("./globals.css");
+
+.not-found {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-secondary);
+}
+
+.not-found__icon {
+}
+
+.not-found__title {
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-small);
+}
+
+.not-found__description {
+  font-size: var(--font-size-neutral);
+  line-height: var(--line-height-large);
+  color: var(--color-extra);
+}
