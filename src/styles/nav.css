@@ -3,7 +3,6 @@
 .navigation {
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
 }
 
@@ -35,16 +34,15 @@
 }
 
 .navigation__list_item-active {
-  border-bottom: 2px solid var(--color-secondary);
+  border-bottom: 2px solid;
 }
 
 .navigation__button {
-  border: 2px solid var(--color-secondary);
+  border: 2px solid;
   cursor: pointer;
 }
 
 .navigation__button:hover {
-  background-color: var(--color-secondary);
+  background-color: var(--button-secondary-hover);
   color: var(--color-primary);
-  transform: scale(1.05);
 }

@@ -1,10 +1,12 @@
+"use client";
+
 import "@/styles/nav.css";
 import NavItem from "./NavItem";
 import { robotoSlab } from "@/vendor/fonts";
 
 export default function Navigation() {
   return (
-    <div className="navigation flex w-full h-[80px] px-[104px] absolute top-0">
+    <div className="navigation flex w-full h-[80px] px-[104px] absolute top-0 border-b-1 border-current/20">
       <span className={`navigation__title ${robotoSlab.className}`}>
         News Explorer
       </span>
