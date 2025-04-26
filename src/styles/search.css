@@ -1,0 +1,28 @@
+@import url("./globals.css");
+
+.searchbar {
+  background-color: var(--background-primary);
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar__input {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-xlarge);
+  color: var(--color-primary);
+}
+
+.searchbar__input::placeholder {
+  color: var(--color-extra);
+}
+
+.searchbar__button {
+  background-color: var(--button-primary);
+  font-size: var(--font-size-neutral);
+  line-height: var(--line-height-large);
+  cursor: pointer;
+}
+
+.searchbar__button:hover {
+  background-color: var(--button-primary-hover);
+}
