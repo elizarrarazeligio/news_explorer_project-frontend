@@ -8,7 +8,7 @@ export default function Navigation() {
       <span className={`navigation__title ${robotoSlab.className}`}>
         News Explorer
       </span>
-      <nav className="navigation__menu flex font-medium h-full">
+      <nav className="navigation__menu hidden md:flex font-medium h-full">
         <ul className="navigation__list flex h-full">
           <NavItem title="Inicio" link="/" />
           <NavItem title="Artículos guardados" link="/articles" />
