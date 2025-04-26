@@ -3,6 +3,7 @@
 .header {
   background-image: url("../../public/bg_header.png");
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   color: var(--color-secondary);
   justify-content: center;

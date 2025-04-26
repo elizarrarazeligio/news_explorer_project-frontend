@@ -1,0 +1,50 @@
+@import url("./globals.css");
+
+.navigation {
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.navigation__title {
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-neutral);
+}
+
+.navigation__menu {
+  font-size: var(--font-size-neutral);
+  line-height: var(--line-height-large);
+  align-items: center;
+  gap: 12px;
+}
+
+.navigation__list {
+  align-items: center;
+}
+
+.navigation__list_item {
+  padding-inline: 25px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navigation__list_item:hover {
+  opacity: 0.6;
+}
+
+.navigation__list_item-active {
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.navigation__button {
+  border: 2px solid var(--color-secondary);
+  cursor: pointer;
+}
+
+.navigation__button:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
