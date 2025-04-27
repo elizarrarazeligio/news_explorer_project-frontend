@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import News from "@/components/News";
 import NotFound from "@/components/NotFound";
+import About from "@/components/About";
 import { useState } from "react";
 
 export default function Main() {
@@ -22,6 +23,7 @@ export default function Main() {
             />
           </div>
         )}
+        <About />
       </main>
     </>
   );
