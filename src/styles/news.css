@@ -1,0 +1,27 @@
+@import url("./globals.css");
+
+.news {
+  justify-content: center;
+  align-items: center;
+}
+
+.news__main {
+  align-self: flex-start;
+  row-gap: 30px;
+}
+
+.news__title {
+  font-size: var(--font-size-xlarge);
+  line-height: var(--line-height-small);
+}
+
+.news__subtitle {
+  font-size: var(--font-size-neutral);
+  line-height: var(--line-height-large);
+  color: var(--color-extra);
+}
+
+.news__text {
+  font-size: var(--font-size-neutral);
+  line-height: var(--line-height-large);
+}

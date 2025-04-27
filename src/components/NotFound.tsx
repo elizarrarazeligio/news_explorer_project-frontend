@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 interface NotFoundProps {
   title: string;
   description: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export default function NotFound(props: NotFoundProps) {

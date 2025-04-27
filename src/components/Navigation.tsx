@@ -13,7 +13,7 @@ export default function Navigation() {
       <nav className="navigation__menu hidden md:flex font-medium h-full">
         <ul className="navigation__list flex h-full">
           <NavItem title="Inicio" link="/" />
-          <NavItem title="Artículos guardados" link="/articles" />
+          <NavItem title="Artículos guardados" link="/saved-news" />
         </ul>
         <button className="navigation__button w-[176px] p-[12px] rounded-full">
           Iniciar sesión

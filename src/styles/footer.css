@@ -1,0 +1,30 @@
+@import url("./globals.css");
+
+.footer {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-xlarge);
+  color: var(--color-extra);
+}
+
+.footer__links {
+  align-items: center;
+  gap: 40px;
+}
+
+.footer__link {
+  font-size: var(--font-size-neutral);
+  line-height: var(--line-height-large);
+}
+
+.footer__social {
+  gap: 10px;
+}
+
+.footer__social-link {
+  font-size: var(--font-size-medium);
+}
