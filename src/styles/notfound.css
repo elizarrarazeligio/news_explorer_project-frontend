@@ -19,3 +19,13 @@
   line-height: var(--line-height-large);
   color: var(--color-extra);
 }
+
+.not-found__button {
+  background-color: var(--button-primary);
+  color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.not-found__button:hover {
+  background-color: var(--button-primary-hover);
+}
