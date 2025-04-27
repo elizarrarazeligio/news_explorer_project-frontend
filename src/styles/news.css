@@ -3,6 +3,7 @@
 .news {
   justify-content: center;
   align-items: center;
+  min-height: 374px;
 }
 
 .news__main {
@@ -24,4 +25,13 @@
 .news__text {
   font-size: var(--font-size-neutral);
   line-height: var(--line-height-large);
+}
+
+.news-cards {
+  background-color: var(--background-secondary);
+}
+
+.news-cards__title {
+  font-size: var(--font-size-xlarge);
+  line-height: var(--line-height-small);
 }

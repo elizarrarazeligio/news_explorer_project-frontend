@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 
 export default function NewsHeader() {
   return (
-    <header className="news flex flex-col h-[374px] pt-[80px] px-[104px]">
+    <header className="news flex flex-col pt-[80px] px-[104px]">
       <Navigation />
       <div className="news__main flex flex-col w-[530px]">
         <span className="news__subtitle">Artículos guardados</span>

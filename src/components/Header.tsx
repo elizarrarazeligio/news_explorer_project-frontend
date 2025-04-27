@@ -5,7 +5,7 @@ import Navigation from "./Navigation";
 
 export default function Header() {
   return (
-    <header className="header flex flex-col h-[576px] pt-[80px]">
+    <header className="header flex flex-col pt-[80px]">
       <Navigation />
       <div className="header__main flex flex-col w-[608px]">
         <h1
