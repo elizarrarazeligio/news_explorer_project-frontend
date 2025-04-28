@@ -36,10 +36,6 @@
   animation: slide 25s linear infinite;
 }
 
-.slider__container:hover .slider__lane {
-  animation-play-state: paused;
-}
-
 .slider__item {
   font-size: var(--font-size-xxlarge);
 }

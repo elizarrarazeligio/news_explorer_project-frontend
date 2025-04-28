@@ -13,8 +13,8 @@ export default function Footer() {
         <Link href="/" className="footer__link">
           Inicio
         </Link>
-        <Link href="#" className="footer__link">
-          Búsqueda
+        <Link href="/#about" className="footer__link">
+          Acerca
         </Link>
         <ul className="footer__social flex">
           <li className="footer__social-link">

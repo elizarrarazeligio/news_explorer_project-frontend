@@ -5,7 +5,7 @@ import Slider from "./Slider";
 
 export default function About() {
   return (
-    <section className="about flex px-[104px] py-[80px]">
+    <section id="about" className="about flex px-[104px] py-[80px]">
       <Image
         src="/about.jpg"
         width={464}
@@ -13,20 +13,26 @@ export default function About() {
         alt="Profile picture"
         className="about__photo rounded-full"
       />
-      <div className="about__info flex flex-col w-[600px] pt-[50px]">
+      <div className="about__info flex flex-col w-[600px] pt-[30px]">
         <h3 className={`about__title ${robotoSlab.className}`}>
           Acerca del autor
         </h3>
         <div className="about__description">
           <p>
-            Este bloque describe al autor del proyecto. Aquí debe indicar tu
-            nombre, a qué te dedicas y qué tecnologías de desarrollo conoces.
+            Mi nombre es <strong>Eligio Elizarraraz Molina</strong> y como
+            profesionista dentro del área de ingeniería y entusiasta hacia el
+            mundo tecnológico, me encuentro continuamente en la búsqueda de
+            soluciones a desafíos del día a día.
+            <br />
+            <br />
+            Mi experiencia incluye el desarrollo de aplicaciones web con diseño
+            adaptativo, abarcando tanto el <strong>Front End</strong> como el{" "}
+            <strong>Back End</strong>.
+            <br />
+            <br />
+            Algunas de las tecnologías con las que he trabajado son:
           </p>
           <Slider />
-          <p>
-            También puedes hablar de tu experiencia con Practicum, de lo que
-            aprendiste allí y de cómo puedes ayudar a los clientes potenciales.
-          </p>
         </div>
       </div>
     </section>
