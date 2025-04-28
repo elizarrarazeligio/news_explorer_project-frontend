@@ -1,0 +1,54 @@
+@import url("./globals.css");
+
+.slider {
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider__container {
+  overflow: hidden;
+  position: relative;
+}
+
+.slider__container::before,
+.slider__container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+}
+
+.slider__container::before {
+  left: 0;
+  background: linear-gradient(to left, transparent, var(--background-primary));
+}
+
+.slider__container::after {
+  right: 0;
+  background: linear-gradient(to right, transparent, var(--background-primary));
+}
+
+.slider__lane {
+  display: flex;
+  animation: slide 25s linear infinite;
+}
+
+.slider__container:hover .slider__lane {
+  animation-play-state: paused;
+}
+
+.slider__item {
+  font-size: var(--font-size-xxlarge);
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

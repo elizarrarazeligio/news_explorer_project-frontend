@@ -2,12 +2,12 @@
 
 .about {
   justify-content: center;
-  align-items: center;
   min-height: 624px;
   column-gap: 56px;
 }
 
 .about__photo {
+  align-self: center;
 }
 
 .about__info {
