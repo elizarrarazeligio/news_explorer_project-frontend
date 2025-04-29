@@ -16,7 +16,7 @@ export default function News(props: NewsProps) {
   const [loader, setLoader] = useState(true);
 
   return (
-    <section className="news-cards px-[104px] py-[65px]">
+    <section className="news-cards flex flex-col px-[104px] py-[65px]">
       <h3
         className={`news-cards__title ${robotoSlab.className} mt-[15px] mb-[65px]`}
       >

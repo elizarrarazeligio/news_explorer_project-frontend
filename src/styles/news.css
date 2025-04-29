@@ -35,3 +35,15 @@
   font-size: var(--font-size-xlarge);
   line-height: var(--line-height-small);
 }
+
+.news-cards__button {
+  background-color: var(--button-secondary);
+  align-self: center;
+  font-size: var(--font-size-neutral);
+  line-height: var(--line-height-large);
+}
+
+.news-cards__button:hover {
+  background-color: var(--button-secondary-hover);
+  cursor: pointer;
+}
