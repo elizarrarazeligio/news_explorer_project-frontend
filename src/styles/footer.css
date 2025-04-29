@@ -3,6 +3,7 @@
 .footer {
   justify-content: space-between;
   align-items: center;
+  border-top: 3px solid var(--background-secondary);
 }
 
 .footer__copyright {
