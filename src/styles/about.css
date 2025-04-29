@@ -2,16 +2,17 @@
 
 .about {
   justify-content: center;
-  min-height: 624px;
   column-gap: 56px;
 }
 
 .about__photo {
   align-self: center;
+  min-width: 300px;
 }
 
 .about__info {
   row-gap: 24px;
+  min-width: 450px;
 }
 
 .about__title {
@@ -22,4 +23,48 @@
 .about__description {
   font-size: var(--font-size-neutral);
   line-height: var(--line-height-large);
+}
+
+@media screen and (max-width: 1024px) {
+  .about {
+    padding: 40px;
+    align-items: center;
+    column-gap: 26px;
+  }
+
+  .about__photo {
+    max-width: 350px;
+    min-width: 300px;
+  }
+
+  .about__info {
+    padding-top: 0;
+    min-width: 360px;
+    row-gap: 12px;
+  }
+
+  .about__title {
+    font-size: var(--font-size-extra-3);
+    line-height: var(--line-height-large);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  .about__info {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about__photo {
+    max-width: 300px;
+    min-width: 270px;
+  }
+}
+
+@media screen and (max-width: 576px) {
 }

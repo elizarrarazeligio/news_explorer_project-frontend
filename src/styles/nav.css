@@ -46,3 +46,28 @@
   background-color: var(--button-secondary-hover);
   color: var(--color-primary);
 }
+
+@media screen and (max-width: 1024px) {
+  .navigation {
+    height: 66px;
+    padding-inline: 40px;
+  }
+
+  .navigation__menu {
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-xxlarge);
+    gap: 16px;
+  }
+
+  .navigation__list_item {
+    padding-inline: 16px;
+  }
+
+  .navigation__button {
+    padding: 8px;
+    width: 152px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+}

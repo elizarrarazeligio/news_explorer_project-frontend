@@ -19,7 +19,7 @@ export default function NewsItem(props: NewsItemProps) {
         alt={`Imagen de "${title}"`}
         width={400}
         height={272}
-        className="news-item__image rounded-[15px]"
+        className="news-item__image"
       />
       <div className="news-item__info grid p-[24px] h-[304px]">
         <span className="news-item__date">{date}</span>

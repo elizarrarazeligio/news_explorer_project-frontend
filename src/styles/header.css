@@ -25,3 +25,27 @@
   font-size: var(--font-size-neutral);
   line-height: var(--line-height-large);
 }
+
+@media screen and (max-width: 1024px) {
+  .header {
+    min-height: 400px;
+    padding-top: 66px;
+  }
+
+  .header__main {
+    width: 452px;
+  }
+
+  .header__title {
+    font-size: var(--font-size-extra-5);
+    line-height: var(--line-height-xsmall);
+    margin-bottom: 16px;
+  }
+
+  .header__description {
+    margin-bottom: 48px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+}

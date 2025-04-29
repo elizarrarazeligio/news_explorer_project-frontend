@@ -26,3 +26,20 @@
 .searchbar__button:hover {
   background-color: var(--button-primary-hover);
 }
+
+@media screen and (max-width: 1024px) {
+  .searchbar {
+    height: 56px;
+  }
+
+  .searchbar__input {
+    width: 67%;
+  }
+
+  .searchbar__button {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+}

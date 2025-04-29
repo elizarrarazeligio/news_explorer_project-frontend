@@ -29,3 +29,12 @@
 .footer__social-link {
   font-size: var(--font-size-medium);
 }
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    padding: 24px 40px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+}

@@ -19,11 +19,13 @@ export default function News(props: NewsProps) {
   return (
     <section className="news-cards flex flex-col px-[104px] py-[65px]">
       <h3
-        className={`news-cards__title ${robotoSlab.className} mt-[15px] mb-[65px]`}
+        className={`news-cards__title ${
+          robotoSlab.className
+        } mt-[15px] mb-[65px] ${title ? "" : "hidden"}`}
       >
         {title}
       </h3>
-      <div className="news-cards__container flex">
+      <div className="news-cards__container grid">
         {/* Se pasan los props de cada item con el operador spread (...) */}
         {news && news.map((item) => <NewsItem key={item.id} {...item} />)}
       </div>

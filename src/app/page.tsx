@@ -40,6 +40,15 @@ export default function Main() {
         image: "/news_01.png",
         reporter: "national geographic",
       },
+      {
+        id: 4,
+        title: "La naturaleza te hace mejor",
+        description:
+          "Milenios atrás ya nos percatamos de ello: el sonido del océano, los aromas de un bosque, la forma en que la luz del sol moteada baila entre las hojas.",
+        date: "19 de febrero de 2019",
+        image: "/news_01.png",
+        reporter: "national geographic",
+      },
     ]);
   }, []);
 
