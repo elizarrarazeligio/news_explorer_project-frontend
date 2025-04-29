@@ -7,7 +7,10 @@ import { robotoSlab } from "@/vendor/fonts";
 export default function Navigation() {
   return (
     <div className="navigation flex w-full h-[80px] px-[104px] absolute top-0 border-b-1 border-current/20">
-      <span className={`navigation__title ${robotoSlab.className}`}>
+      <span
+        className={`navigation__title ${robotoSlab.className}`}
+        onClick={() => (window.location.href = "/")}
+      >
         News Explorer
       </span>
       <nav className="navigation__menu hidden md:flex font-medium h-full">

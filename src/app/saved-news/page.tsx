@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function SavedNews() {
   const [savedNews, setSavedNews] = useState([] as any[]);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     setSavedNews([
@@ -54,7 +55,7 @@ export default function SavedNews() {
       <NewsHeader newsCount={savedNews.length} />
       <main className="flex flex-col">
         {savedNews.length > 0 ? (
-          <News news={savedNews} />
+          <News news={savedNews} loader={loader} />
         ) : (
           <div className="h-[374px]">
             <NotFound

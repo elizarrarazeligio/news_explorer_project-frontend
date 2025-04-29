@@ -3,7 +3,7 @@ import { robotoSlab } from "@/vendor/fonts";
 import SearchBar from "./SearchBar";
 import Navigation from "./Navigation";
 
-export default function Header() {
+export default function Header({ setSearch }: { setSearch: Function }) {
   return (
     <header className="header flex flex-col pt-[80px]">
       <Navigation />
@@ -17,7 +17,7 @@ export default function Header() {
           Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu
           cuenta personal.
         </p>
-        <SearchBar />
+        <SearchBar setSearch={setSearch} />
       </div>
     </header>
   );
