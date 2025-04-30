@@ -54,10 +54,6 @@
     justify-content: flex-start;
   }
 
-  .header__main {
-    width: auto;
-  }
-
   .header__title {
     font-size: var(--font-size-extra-4);
     line-height: var(--line-height-medium);
@@ -67,6 +63,12 @@
     font-size: var(--font-size-medium);
     line-height: var(--line-height-neutral);
     margin-bottom: 98px;
+  }
+}
+
+@media screen and (max-width: 452px) {
+  .header__main {
+    width: auto;
   }
 }
 
