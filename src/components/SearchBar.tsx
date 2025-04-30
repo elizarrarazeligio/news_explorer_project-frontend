@@ -13,7 +13,7 @@ export default function SearchBar({ setSearch }: { setSearch: Function }) {
       onSubmit={handleSearch}
     >
       <input
-        className="searchbar__input h-full w-3/4 rounded-l-full px-[24px] font-normal"
+        className="searchbar__input h-full w-3/4 rounded-full px-[24px] font-normal"
         type="search"
         placeholder="Introduce un tema"
       />

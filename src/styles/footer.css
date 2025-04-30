@@ -36,5 +36,20 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 20px 16px;
+  }
+}
+
 @media screen and (max-width: 576px) {
+  .footer {
+    flex-direction: column-reverse;
+    gap: 25px;
+  }
+
+  .footer__links {
+    flex-direction: column;
+    gap: 15px;
+  }
 }

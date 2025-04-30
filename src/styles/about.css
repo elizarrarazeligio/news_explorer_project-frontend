@@ -53,6 +53,7 @@
   .about {
     flex-direction: column;
     row-gap: 24px;
+    padding: 32px 16px;
   }
 
   .about__info {
@@ -61,10 +62,22 @@
   }
 
   .about__photo {
-    max-width: 300px;
-    min-width: 270px;
+    max-width: 320px;
+    min-width: 288px;
   }
 }
 
 @media screen and (max-width: 576px) {
+  .about {
+    padding-bottom: 50px;
+  }
+
+  .about__info {
+    row-gap: 16px;
+    min-width: 288px;
+  }
+
+  .about__photo {
+    width: 100%;
+  }
 }

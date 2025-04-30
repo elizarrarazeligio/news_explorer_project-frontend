@@ -8,7 +8,7 @@ export default function Navigation() {
   return (
     <div className="navigation flex w-full h-[80px] px-[104px] absolute top-0 border-b-1 border-current/20">
       <span
-        className={`navigation__title ${robotoSlab.className}`}
+        className={`navigation__title ${robotoSlab.className} font-bold`}
         onClick={() => (window.location.href = "/")}
       >
         News Explorer
