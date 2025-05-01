@@ -18,8 +18,8 @@ export default function Navigation() {
           <NavItem title="Inicio" link="/" />
           <NavItem title="Artículos guardados" link="/saved-news" />
         </ul>
-        <button className="navigation__button w-[176px] p-[12px] rounded-full">
-          Iniciar sesión
+        <button className="navigation__button w-[176px] p-[12px] rounded-full hover:bg-current">
+          <span className="navigation__button-text">Iniciar sesión</span>
         </button>
       </nav>
     </div>
