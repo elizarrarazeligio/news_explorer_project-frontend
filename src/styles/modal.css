@@ -20,8 +20,7 @@
 .modal__container {
   align-items: center;
   background-color: var(--background-primary);
-  width: 420px;
-  height: 383px;
+  width: 430px;
   position: fixed;
 }
 
@@ -41,4 +40,21 @@
   font-size: var(--font-size-extra-2);
   color: var(--color-primary);
   align-self: flex-start;
+}
+
+.modal__form {
+}
+
+.modal__text {
+  color: var(--color-primary);
+  font-size: var(--font-size-xsmall);
+}
+
+.modal__link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.modal__link:hover {
+  color: var(--color-tertiary);
 }

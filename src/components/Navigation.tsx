@@ -4,7 +4,7 @@ import "@/styles/nav.css";
 import NavItem from "./NavItem";
 import ModalWithForm from "./ModalWithForm";
 import { robotoSlab } from "@/vendor/fonts";
-import { FormEvent, KeyboardEventHandler, ReactNode, useState } from "react";
+import { ReactNode, useState } from "react";
 import Login from "./Login";
 
 export default function Navigation() {
@@ -56,6 +56,7 @@ export default function Navigation() {
       {popup && (
         <ModalWithForm
           title={popup.title}
+          openPopup={openPopup}
           closePopup={closePopup}
           handleEscClose={handleEscClose}
         >
