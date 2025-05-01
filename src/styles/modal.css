@@ -1,0 +1,44 @@
+@import url("./globals.css");
+
+.modal {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.modal__container {
+  align-items: center;
+  background-color: var(--background-primary);
+  width: 420px;
+  height: 383px;
+  position: fixed;
+}
+
+.modal__close {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
+.modal__title {
+  font-size: var(--font-size-extra-2);
+  color: var(--color-primary);
+  align-self: flex-start;
+}
