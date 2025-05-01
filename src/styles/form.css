@@ -23,8 +23,14 @@
   width: 100%;
   color: var(--color-primary);
   font-size: var(--font-size-xsmall);
-  padding: 8px 2px;
+  padding-block: 8px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.form__input:focus {
+  padding-inline: 5px;
+  border-bottom: rgba(0, 0, 0, 1);
 }
 
 .form__input-error {
@@ -47,4 +53,14 @@
 .form__button:hover {
   background-color: var(--button-primary-hover);
   transform: scale(1.02);
+}
+
+@media screen and (max-width: 576px) {
+  .form {
+    margin-block: 18px;
+  }
+
+  .form__fieldset {
+    padding-bottom: 0;
+  }
 }
