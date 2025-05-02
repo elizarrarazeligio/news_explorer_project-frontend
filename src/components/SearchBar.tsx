@@ -1,10 +1,23 @@
 import "@/styles/search.css";
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
-export default function SearchBar({ setSearch }: { setSearch: Function }) {
+interface SearchBarProps {
+  setSearch: Function;
+  query: string;
+  setQuery: Function;
+}
+
+export default function SearchBar(props: SearchBarProps) {
+  const { query, setQuery, setSearch } = props;
+
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     setSearch(true);
+  };
+
+  const handleChange = (e: ChangeEvent) => {
+    const { value } = e.target as HTMLInputElement;
+    setQuery(value);
   };
 
   return (
@@ -16,6 +29,8 @@ export default function SearchBar({ setSearch }: { setSearch: Function }) {
         className="searchbar__input h-full w-3/4 rounded-full px-[24px] font-normal"
         type="search"
         placeholder="Introduce un tema"
+        value={query}
+        onChange={handleChange}
       />
       <button
         className="searchbar__button rounded-full h-full w-1/4 font-medium"

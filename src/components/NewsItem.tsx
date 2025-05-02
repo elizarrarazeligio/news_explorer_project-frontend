@@ -4,31 +4,32 @@ import { robotoSlab } from "@/vendor/fonts";
 interface NewsItemProps {
   title: string;
   description: string;
-  date: string;
-  image: string;
-  reporter: string;
+  publishedAt: string;
+  urlToImage: string;
+  source: { name: string };
 }
 
 export default function NewsItem(props: NewsItemProps) {
-  const { title, description, date, image, reporter } = props;
+  const { title, description, publishedAt, urlToImage, source } = props;
+  const date = new Date(Date.parse(publishedAt));
 
   return (
     <div className="news-item flex flex-col rounded-[15px] h-[576px] w-[400px]">
       <Image
-        src={image}
+        src={urlToImage ?? null}
         alt={`Imagen de "${title}"`}
         width={400}
         height={272}
         className="news-item__image"
       />
       <div className="news-item__info grid p-[24px] h-[304px]">
-        <span className="news-item__date">{date}</span>
+        <span className="news-item__date">{date.toDateString()}</span>
         <h4 className={`news-item__title ${robotoSlab.className}`}>{title}</h4>
         <p className="news-item__description">{description}</p>
         <span
           className={`news-item__reporter ${robotoSlab.className} font-bold`}
         >
-          {reporter.toLocaleUpperCase()}
+          {source.name.toLocaleUpperCase()}
         </span>
       </div>
     </div>
