@@ -1,16 +1,17 @@
 import "@/styles/header.css";
 import { robotoSlab } from "@/vendor/fonts";
+import { FormEvent } from "react";
 import SearchBar from "./SearchBar";
 import Navigation from "./Navigation";
 
 interface HeaderProps {
-  setSearch: Function;
   query: string;
   setQuery: Function;
+  handleSearch: (e: FormEvent<Element>) => void;
 }
 
 export default function Header(props: HeaderProps) {
-  const { query, setQuery, setSearch } = props;
+  const { query, setQuery, handleSearch } = props;
 
   return (
     <header className="header flex flex-col pt-[80px]">
@@ -25,7 +26,11 @@ export default function Header(props: HeaderProps) {
           Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu
           cuenta personal.
         </p>
-        <SearchBar setSearch={setSearch} query={query} setQuery={setQuery} />
+        <SearchBar
+          query={query}
+          setQuery={setQuery}
+          handleSearch={handleSearch}
+        />
       </div>
     </header>
   );

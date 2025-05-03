@@ -2,18 +2,13 @@ import "@/styles/search.css";
 import { ChangeEvent, FormEvent } from "react";
 
 interface SearchBarProps {
-  setSearch: Function;
   query: string;
   setQuery: Function;
+  handleSearch: (e: FormEvent<Element>) => void;
 }
 
 export default function SearchBar(props: SearchBarProps) {
-  const { query, setQuery, setSearch } = props;
-
-  const handleSearch = (e: FormEvent) => {
-    e.preventDefault();
-    setSearch(true);
-  };
+  const { query, setQuery, handleSearch } = props;
 
   const handleChange = (e: ChangeEvent) => {
     const { value } = e.target as HTMLInputElement;

@@ -62,6 +62,14 @@
   overflow: hidden;
   width: auto;
   box-shadow: 0 0 5px var(--color-extra);
+  max-width: 400px;
+  transition: all 0.3s;
+}
+
+.news-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 5px var(--color-primary);
+  cursor: pointer;
 }
 
 .news-item__image {
@@ -162,6 +170,7 @@
 
   .news-item {
     height: 420px;
+    max-width: 320px;
   }
 
   .news-item__image {
@@ -222,6 +231,7 @@
 
   .news-item {
     height: 440px;
+    max-width: 288px;
   }
 
   .news-item__image {

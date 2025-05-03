@@ -6,17 +6,22 @@ import News from "@/components/News";
 import NotFound from "@/components/NotFound";
 import About from "@/components/About";
 import Preloader from "@/components/Preloader";
-import { useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { newsApi } from "@/utils/NewsApi";
 
 export default function Main() {
   const [news, setNews] = useState([] as any[]);
   const [search, setSearch] = useState(false);
+  const [active, setActive] = useState(false);
   const [loader, setLoader] = useState(false);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    if (search) return;
+
     setLoader(true);
+    setSearch(true);
 
     newsApi
       .searchNews(query)
@@ -27,14 +32,15 @@ export default function Main() {
       .finally(() => {
         setLoader(false);
         setSearch(false);
+        setActive(true);
       });
-  }, [search]);
+  };
 
   return (
     <>
-      <Header setSearch={setSearch} query={query} setQuery={setQuery} />
+      <Header query={query} setQuery={setQuery} handleSearch={handleSearch} />
       <main className="flex flex-col">
-        {(search || news.length) &&
+        {(search || active) &&
           (loader ? (
             <div className="w-full h-[282px]">
               <Preloader />
