@@ -40,7 +40,7 @@
 
 .news-cards__container {
   gap: 16px;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .news-cards__button {
@@ -62,7 +62,6 @@
   overflow: hidden;
   width: auto;
   box-shadow: 0 0 5px var(--color-extra);
-  max-width: 400px;
   transition: all 0.3s;
 }
 
@@ -122,7 +121,7 @@
 
 @media screen and (min-width: 1850px) {
   .news-cards__container {
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .news-item {
@@ -170,7 +169,6 @@
 
   .news-item {
     height: 420px;
-    max-width: 320px;
   }
 
   .news-item__image {
@@ -218,7 +216,7 @@
   }
 
   .news-cards__container {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .news-cards__container {
@@ -231,7 +229,6 @@
 
   .news-item {
     height: 440px;
-    max-width: 288px;
   }
 
   .news-item__image {
