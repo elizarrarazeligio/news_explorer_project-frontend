@@ -16,6 +16,8 @@ const toDate = currentDate.toISOString();
 currentDate.setDate(currentDate.getDate() - 7);
 const fromDate = currentDate.toISOString();
 
+console.log(toDate, fromDate);
+
 export const newsApi = new NewsApi({
   baseUrl: `https://newsapi.org/v2/everything?from=${fromDate}&to=${toDate}&sortBy=publishedAt&language=es`,
   headers: {

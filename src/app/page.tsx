@@ -15,6 +15,7 @@ export default function Main() {
   const [active, setActive] = useState(false);
   const [loader, setLoader] = useState(false);
   const [query, setQuery] = useState("");
+  const [newsLength, setNewsLength] = useState(0);
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -22,6 +23,7 @@ export default function Main() {
 
     setLoader(true);
     setSearch(true);
+    setNewsLength(window.innerWidth > 1850 ? 4 : 3);
 
     newsApi
       .searchNews(query)
@@ -36,6 +38,12 @@ export default function Main() {
       });
   };
 
+  const handleViewMore = () => {
+    setNewsLength((prevState: number) => {
+      return (prevState = newsLength + (window.innerWidth > 1850 ? 4 : 3));
+    });
+  };
+
   return (
     <>
       <Header query={query} setQuery={setQuery} handleSearch={handleSearch} />
@@ -48,8 +56,18 @@ export default function Main() {
           ) : (
             <>
               {news.length > 0 ? (
-                <News title="Resultados de la búsqueda" news={news}>
-                  <button className="news-cards__button rounded-full w-[288px] h-[64px] mt-[65px] mb-[15px] font-medium">
+                <News
+                  title="Resultados de la búsqueda"
+                  news={news}
+                  newsLength={newsLength}
+                >
+                  <button
+                    className={`news-cards__button rounded-full w-[288px] h-[64px] mt-[65px] mb-[15px] font-medium ${
+                      newsLength >= news.length && "hidden"
+                    }`}
+                    onClick={handleViewMore}
+                    disabled={newsLength >= news.length}
+                  >
                     Ver más
                   </button>
                 </News>

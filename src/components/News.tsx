@@ -8,11 +8,12 @@ import NewsItem from "./NewsItem";
 interface NewsProps {
   title?: string;
   news?: any[];
+  newsLength?: number;
   children?: ReactNode;
 }
 
 export default function News(props: NewsProps) {
-  const { title, children, news } = props;
+  const { title, children, news, newsLength } = props;
 
   return (
     <>
@@ -27,7 +28,9 @@ export default function News(props: NewsProps) {
         <div className="news-cards__container grid">
           {/* Se pasan los props de cada item con el operador spread (...) */}
           {news &&
-            news.map((item, index) => <NewsItem key={index} {...item} />)}
+            news
+              .slice(0, newsLength)
+              .map((item, index) => <NewsItem key={index} {...item} />)}
         </div>
 
         {children}
