@@ -75,6 +75,7 @@
   object-fit: cover;
   width: 100%;
   height: 272px;
+  position: relative;
 }
 
 .news-item__info {

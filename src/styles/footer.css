@@ -28,6 +28,11 @@
 
 .footer__social-link {
   font-size: var(--font-size-medium);
+  transition: transform 0.2s;
+}
+
+.footer__social-link:hover {
+  transform: scale(1.2);
 }
 
 @media screen and (max-width: 1024px) {

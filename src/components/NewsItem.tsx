@@ -18,13 +18,14 @@ export default function NewsItem(props: NewsItemProps) {
   return (
     <Link href={`${url || null}`} target="_blank">
       <div className="news-item flex flex-col rounded-[15px] h-[576px] w-[400px]">
-        <Image
-          src={urlToImage ?? null}
-          alt={`Imagen de "${title}"`}
-          width={400}
-          height={272}
-          className="news-item__image"
-        />
+        <div className="news-item__image">
+          <Image
+            src={urlToImage ?? "/not-found_icon.png"}
+            alt={`Imagen de "${title}"`}
+            fill={true}
+            className="object-cover"
+          />
+        </div>
         <div className="news-item__info grid p-[24px] h-[304px]">
           <span className="news-item__date">{date.toDateString()}</span>
           <h4 className={`news-item__title ${robotoSlab.className}`}>
