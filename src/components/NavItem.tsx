@@ -15,7 +15,7 @@ export default function NavItem(props: NavItemProps) {
 
   return (
     <li
-      className={`navigation__list_item ${
+      className={`navigation__list_item text-center ${
         pathname === link ? "navigation__list_item-active" : ""
       }`}
     >

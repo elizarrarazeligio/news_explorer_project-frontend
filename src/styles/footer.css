@@ -1,0 +1,60 @@
+@import url("./globals.css");
+
+.footer {
+  justify-content: space-between;
+  align-items: center;
+  border-top: 3px solid var(--background-secondary);
+}
+
+.footer__copyright {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-xlarge);
+  color: var(--color-extra);
+}
+
+.footer__links {
+  align-items: center;
+  gap: 40px;
+}
+
+.footer__link {
+  font-size: var(--font-size-neutral);
+  line-height: var(--line-height-large);
+}
+
+.footer__social {
+  gap: 10px;
+}
+
+.footer__social-link {
+  font-size: var(--font-size-medium);
+  transition: transform 0.2s;
+}
+
+.footer__social-link:hover {
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    padding: 24px 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 20px 16px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .footer {
+    flex-direction: column-reverse;
+    gap: 25px;
+  }
+
+  .footer__links {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
