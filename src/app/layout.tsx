@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="es">
+    <html>
       <body className={`${roboto.className} antialiased`}>
         {children}
         <Footer />
