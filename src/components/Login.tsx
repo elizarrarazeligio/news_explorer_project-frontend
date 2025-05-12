@@ -1,6 +1,7 @@
 import "@/styles/form.css";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { inter } from "@/vendor/fonts";
+import { authApi } from "@/utils/AuthApi";
 
 export default function Login() {
   const [data, setData] = useState({
@@ -8,8 +9,12 @@ export default function Login() {
     password: "" as string,
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    authApi
+      .login(data.email, data.password)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   const handleChange = (e: ChangeEvent) => {
