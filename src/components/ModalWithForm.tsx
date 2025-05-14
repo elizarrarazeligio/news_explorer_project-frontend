@@ -24,7 +24,7 @@ export default function ModalWithForm(props: ModalWithFormProps) {
 
   const registerPopup = {
     title: "Inscribirse",
-    children: <Register />,
+    children: <Register openPopup={openPopup} loginPopup={loginPopup} />,
   };
 
   return (

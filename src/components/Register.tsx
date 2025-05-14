@@ -1,8 +1,16 @@
 import "@/styles/form.css";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, ReactNode } from "react";
 import { inter } from "@/vendor/fonts";
+import { authApi } from "@/utils/AuthApi";
+import { toast } from "react-toastify";
 
-export default function Register() {
+interface RegisterProps {
+  openPopup: (popup: { title: string; children: ReactNode }) => void;
+  loginPopup: { title: string; children: ReactNode };
+}
+
+export default function Register(props: RegisterProps) {
+  const { openPopup, loginPopup } = props;
   const [data, setData] = useState({
     email: "" as string,
     password: "" as string,
@@ -11,6 +19,13 @@ export default function Register() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    authApi
+      .register(data.username, data.email, data.password)
+      .then((res) => {
+        toast.success(res.message);
+        openPopup(loginPopup);
+      })
+      .catch((err) => toast.error(err.message));
   };
 
   const handleChange = (e: ChangeEvent) => {

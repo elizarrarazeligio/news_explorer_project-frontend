@@ -2,6 +2,7 @@ import "@/styles/form.css";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { inter } from "@/vendor/fonts";
 import { authApi } from "@/utils/AuthApi";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [data, setData] = useState({
@@ -13,8 +14,8 @@ export default function Login() {
     e.preventDefault();
     authApi
       .login(data.email, data.password)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => toast.success(res.message))
+      .catch((err) => toast.error(err.message));
   };
 
   const handleChange = (e: ChangeEvent) => {
