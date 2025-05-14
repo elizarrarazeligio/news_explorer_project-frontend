@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { FC, PropsWithChildren } from "react";
 import { roboto } from "@/vendor/fonts";
+import { ToastContainer } from "react-toastify";
 import Footer from "@/components/Footer";
 import "@/styles/globals.css";
 
@@ -26,6 +27,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <html>
       <body className={`${roboto.className} antialiased`}>
         {children}
+        <ToastContainer />
         <Footer />
       </body>
     </html>
