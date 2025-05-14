@@ -7,7 +7,7 @@ export default class Api {
     this._headers = headers;
   }
 
-  async _makeRequest(endpoint: string, options?: RequestInit): Promise<any[]> {
+  async _makeRequest(endpoint: string, options?: RequestInit): Promise<any> {
     const res = await fetch(`${this._baseUrl}${endpoint}`, {
       method: options?.method || "GET",
       headers: {

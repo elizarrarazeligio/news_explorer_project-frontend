@@ -1,11 +1,28 @@
 import Api from "./Api";
 
+interface ApiResponse {
+  status: string;
+  message: string;
+}
+
+interface LoginResponse extends ApiResponse {
+  token?: string;
+}
+
+interface UserResponse extends ApiResponse {
+  data: {
+    _id: number;
+    name: string;
+    email: string;
+  };
+}
+
 class AuthApi extends Api {
   constructor({ baseUrl, headers }: { baseUrl: string; headers: {} }) {
     super({ baseUrl, headers });
   }
 
-  login(email: string, password: string): Promise<Object> {
+  login(email: string, password: string): Promise<LoginResponse> {
     return super._makeRequest("/signin", {
       method: "POST",
       body: JSON.stringify({
@@ -15,7 +32,11 @@ class AuthApi extends Api {
     });
   }
 
-  register(name: string, email: string, password: string): Promise<Object> {
+  register(
+    name: string,
+    email: string,
+    password: string
+  ): Promise<ApiResponse> {
     return super._makeRequest("/signup", {
       method: "POST",
       body: JSON.stringify({
@@ -26,7 +47,7 @@ class AuthApi extends Api {
     });
   }
 
-  getUserInfo(token: string): Promise<Object> {
+  getUserInfo(token: string): Promise<UserResponse> {
     return super._makeRequest("/users/me", {
       headers: {
         Authorization: `Bearer ${token}`,
