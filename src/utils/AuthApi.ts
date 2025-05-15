@@ -7,6 +7,7 @@ interface ApiResponse {
 
 interface LoginResponse extends ApiResponse {
   token: string;
+  data: IUser;
 }
 
 interface IUser {

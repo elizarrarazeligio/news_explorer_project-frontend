@@ -1,11 +1,16 @@
 import "@/styles/form.css";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { inter } from "@/vendor/fonts";
 import { authApi } from "@/utils/AuthApi";
 import { toast } from "react-toastify";
 import { setToken } from "@/utils/token";
+import { CurrentUserContext } from "@/contexts/CurrentUserContext";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const userContext = useContext(CurrentUserContext);
+  const router = useRouter();
+
   const [data, setData] = useState({
     email: "" as string,
     password: "" as string,
@@ -16,11 +21,16 @@ export default function Login() {
     authApi
       .login(data.email, data.password)
       .then((res) => {
-        setToken(res.token);
-        toast.success(res.message);
+        if (res.token) {
+          userContext?.setCurrentUser(res.data);
+          setToken(res.token);
+          toast.success(res.message);
+        }
       })
+      .then(() => router.push("/saved-news"))
       .catch((err) => toast.error(err.message));
   };
+  console.log(userContext?.currentUser);
 
   const handleChange = (e: ChangeEvent) => {
     const { name, value } = e.target as HTMLInputElement;
