@@ -6,15 +6,17 @@ interface ApiResponse {
 }
 
 interface LoginResponse extends ApiResponse {
-  token?: string;
+  token: string;
+}
+
+interface IUser {
+  _id: number;
+  name: string;
+  email: string;
 }
 
 interface UserResponse extends ApiResponse {
-  data: {
-    _id: number;
-    name: string;
-    email: string;
-  };
+  data: IUser;
 }
 
 class AuthApi extends Api {
@@ -47,7 +49,7 @@ class AuthApi extends Api {
     });
   }
 
-  getUserInfo(token: string): Promise<UserResponse> {
+  getUserInfo(token: string | undefined): Promise<UserResponse> {
     return super._makeRequest("/users/me", {
       headers: {
         Authorization: `Bearer ${token}`,

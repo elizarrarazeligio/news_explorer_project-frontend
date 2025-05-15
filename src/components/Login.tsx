@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { inter } from "@/vendor/fonts";
 import { authApi } from "@/utils/AuthApi";
 import { toast } from "react-toastify";
+import { setToken } from "@/utils/token";
 
 export default function Login() {
   const [data, setData] = useState({
@@ -14,7 +15,10 @@ export default function Login() {
     e.preventDefault();
     authApi
       .login(data.email, data.password)
-      .then((res) => toast.success(res.message))
+      .then((res) => {
+        setToken(res.token);
+        toast.success(res.message);
+      })
       .catch((err) => toast.error(err.message));
   };
 
