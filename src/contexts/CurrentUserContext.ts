@@ -1,15 +1,17 @@
 import { createContext } from "react";
 
-type User = {
-  _id: number;
-  name: string;
-  email: string;
-};
+interface User {
+  _id?: number;
+  name?: string;
+  email?: string;
+}
 
-export type CurrentUserContextType = {
-  currentUser: User | {};
-  setCurrentUser: (currentUser: User | {}) => void;
-};
+export interface CurrentUserContextType {
+  currentUser: User;
+  setCurrentUser: (currentUser: User) => void;
+  logged: boolean;
+  setLogged: (logged: boolean) => void;
+}
 
 export const CurrentUserContext = createContext<CurrentUserContextType | null>(
   null

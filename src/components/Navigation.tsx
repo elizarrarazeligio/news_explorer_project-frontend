@@ -18,6 +18,7 @@ export default function Navigation() {
   const [currentUser, setCurrentUser] = useState<
     CurrentUserContextType["currentUser"]
   >({});
+  const [logged, setLogged] = useState(false);
   const [menu, setMenu] = useState(false as boolean);
   const [popup, setPopup] = useState<{
     title: string;
@@ -34,6 +35,7 @@ export default function Navigation() {
       .getUserInfo(jwt)
       .then(({ data }) => {
         setCurrentUser(data);
+        setLogged(true);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -52,7 +54,9 @@ export default function Navigation() {
   };
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <CurrentUserContext.Provider
+      value={{ currentUser, setCurrentUser, logged, setLogged }}
+    >
       <div
         className={`navigation flex w-full h-[80px] px-[104px] absolute top-0 border-b-1 border-current/20 ${
           menu && "border-white/20"
