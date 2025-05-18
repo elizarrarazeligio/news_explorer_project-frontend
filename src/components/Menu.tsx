@@ -9,9 +9,10 @@ import { usePathname } from "next/navigation";
 
 interface MenuProps {
   openPopup: (popup: { title: string; children: ReactNode }) => void;
+  menu?: boolean;
 }
 
-export default function Menu({ openPopup }: MenuProps) {
+export default function Menu({ openPopup, menu }: MenuProps) {
   const userContext = useContext(CurrentUserContext);
   const pathname = usePathname();
 
@@ -39,30 +40,29 @@ export default function Menu({ openPopup }: MenuProps) {
         )}
       </ul>
 
-      {userContext?.logged ? (
-        <button
-          className="navigation__button py-[12px] px-[20px] rounded-full hover:bg-current transition-all duration-300 font-medium"
-          onClick={handleLogout}
-        >
-          <span className="navigation__button-text flex gap-[10px]">
-            {getFirstName(userContext?.currentUser.name)}
-            <Image
-              src="/logout.svg"
-              alt="logout"
-              width={24}
-              height={24}
-              className={`${pathname == "/" && "invert"}`}
-            />
-          </span>
-        </button>
-      ) : (
-        <button
-          className="navigation__button w-[176px] p-[12px] rounded-full hover:bg-current transition-all duration-300 font-medium"
-          onClick={() => openPopup(loginPopup)}
-        >
-          <span className="navigation__button-text">Iniciar sesión</span>
-        </button>
-      )}
+      <button
+        className="navigation__button flex py-[12px] px-[20px] rounded-full hover:bg-current transition-all duration-300 font-medium"
+        onClick={() =>
+          userContext?.logged ? handleLogout() : openPopup(loginPopup)
+        }
+      >
+        <span className="navigation__button-text flex gap-[10px]">
+          {userContext?.logged ? (
+            <>
+              {getFirstName(userContext?.currentUser.name)}
+              <Image
+                src="/logout.svg"
+                alt="logout"
+                width={24}
+                height={24}
+                className={`${(pathname == "/" || menu) && "invert"}`}
+              />
+            </>
+          ) : (
+            "Iniciar sesión"
+          )}
+        </span>
+      </button>
     </>
   );
 }
