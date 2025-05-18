@@ -4,21 +4,11 @@ import Menu from "./Menu";
 import { robotoSlab } from "@/vendor/fonts";
 import { ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import {
-  CurrentUserContext,
-  CurrentUserContextType,
-} from "@/contexts/CurrentUserContext";
 import Image from "next/image";
-import { getToken } from "@/utils/token";
-import { authApi } from "@/utils/AuthApi";
 
 export default function Navigation() {
   const pathname = usePathname();
 
-  const [currentUser, setCurrentUser] = useState<
-    CurrentUserContextType["currentUser"]
-  >({});
-  const [logged, setLogged] = useState(false);
   const [menu, setMenu] = useState(false as boolean);
   const [popup, setPopup] = useState<{
     title: string;
@@ -27,17 +17,6 @@ export default function Navigation() {
 
   useEffect(() => {
     document.addEventListener("keydown", () => setMenu(false));
-
-    const jwt = getToken();
-    if (!jwt) return;
-
-    authApi
-      .getUserInfo(jwt)
-      .then(({ data }) => {
-        setCurrentUser(data);
-        setLogged(true);
-      })
-      .catch((err) => console.log(err));
   }, []);
 
   const openPopup = (popup: { title: string; children: ReactNode }) => {
@@ -54,9 +33,7 @@ export default function Navigation() {
   };
 
   return (
-    <CurrentUserContext.Provider
-      value={{ currentUser, setCurrentUser, logged, setLogged }}
-    >
+    <>
       <div
         className={`navigation flex w-full h-[80px] px-[104px] absolute top-0 border-b-1 border-current/20 ${
           menu && "border-white/20"
@@ -100,6 +77,6 @@ export default function Navigation() {
           {popup.children}
         </ModalWithForm>
       )}
-    </CurrentUserContext.Provider>
+    </>
   );
 }

@@ -7,7 +7,7 @@ import NewsItem from "./NewsItem";
 
 interface NewsProps {
   title?: string;
-  news?: any[];
+  news: any[];
   newsLength?: number;
   children?: ReactNode;
 }
