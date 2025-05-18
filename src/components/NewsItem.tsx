@@ -21,6 +21,9 @@ export default function NewsItem(props: NewsItemProps) {
     <Link href={`${url || null}`} target="_blank">
       <div className="news-item flex flex-col rounded-[15px] h-[576px] w-[400px]">
         <div className="news-item__image">
+          {keyword && (
+            <div className="news-item__keyword font-medium">{keyword}</div>
+          )}
           <Image
             src={urlToImage ?? "/not-found_icon.png"}
             alt={`Imagen de "${title}"`}
