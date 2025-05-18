@@ -16,7 +16,7 @@ class NewsApi extends Api {
 
   searchNews(query: string): Promise<Object> {
     return super._makeRequest(
-      `/everything?from=${this._fromDate}&to=${this._toDate}&sortBy=publishedAt&language=es&q=${query}`
+      `/everything?from=${this._fromDate}&to=${this._toDate}&sortBy=publishedAt&q=${query}`
     );
   }
 }

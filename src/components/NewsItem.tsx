@@ -3,16 +3,18 @@ import { robotoSlab } from "@/vendor/fonts";
 import Link from "next/link";
 
 interface NewsItemProps {
+  keyword?: string;
   title: string;
   description: string;
   publishedAt: string;
   urlToImage: string;
-  source: { name: string };
+  source: string | { name: string };
   url?: string;
 }
 
 export default function NewsItem(props: NewsItemProps) {
-  const { title, description, publishedAt, urlToImage, source, url } = props;
+  const { keyword, title, description, publishedAt, urlToImage, source, url } =
+    props;
   const date = new Date(Date.parse(publishedAt));
 
   return (
@@ -35,7 +37,10 @@ export default function NewsItem(props: NewsItemProps) {
           <span
             className={`news-item__reporter ${robotoSlab.className} font-bold`}
           >
-            {source.name.toLocaleUpperCase()}
+            {(typeof source == "string"
+              ? source
+              : source.name
+            ).toLocaleUpperCase()}
           </span>
         </div>
       </div>

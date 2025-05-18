@@ -1,0 +1,56 @@
+import Api from "./Api";
+import { getToken } from "./token";
+
+interface IArticle {
+  _id: string;
+  keyword: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  source: string;
+  url: string;
+  urlToImage: string;
+}
+
+class SavedNewsApi extends Api {
+  constructor({ baseUrl, headers }: { baseUrl: string; headers: {} }) {
+    super({ baseUrl, headers });
+  }
+
+  getArticles() {
+    return super._makeRequest("/articles");
+  }
+
+  saveArticle(data: IArticle) {
+    return super._makeRequest("/articles", {
+      method: "POST",
+      body: JSON.stringify({
+        keyword: data.keyword,
+        title: data.title,
+        description: data.description,
+        publishedAt: data.publishedAt,
+        source: data.source,
+        url: data.url,
+        urlToImage: data.urlToImage,
+      }),
+    });
+  }
+
+  removeArticle(articleId: string) {
+    return super._makeRequest(`/articles/${articleId}`, {
+      method: "DELETE",
+      body: JSON.stringify({
+        _id: articleId,
+      }),
+    });
+  }
+}
+
+export const savedNewsApi = new SavedNewsApi({
+  baseUrl: "http://localhost:3005",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: `Bearer ${getToken()}`,
+  },
+});

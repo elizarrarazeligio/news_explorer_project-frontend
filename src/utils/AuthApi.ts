@@ -11,7 +11,7 @@ interface LoginResponse extends ApiResponse {
 }
 
 interface IUser {
-  _id: number;
+  _id: string;
   name: string;
   email: string;
 }
