@@ -30,7 +30,10 @@ export default function Main() {
       .then((res: any) => {
         setNews(res.articles);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        setNews([]);
+        console.log(err);
+      })
       .finally(() => {
         setLoader(false);
         setSearch(false);
