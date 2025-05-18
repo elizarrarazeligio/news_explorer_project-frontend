@@ -19,7 +19,7 @@ export default function SavedNews() {
 
   return (
     <>
-      <NewsHeader newsCount={savedNews.length} />
+      <NewsHeader news={savedNews} />
       <main className="flex flex-col">
         {savedNews.length > 0 ? (
           <News news={savedNews} />
