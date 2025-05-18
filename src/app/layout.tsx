@@ -28,7 +28,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <html>
       <body className={`${roboto.className} antialiased`}>
         <CurrentUserProvider>{children}</CurrentUserProvider>
-        <ToastContainer />
+        <ToastContainer autoClose={1000} newestOnTop={true} />
         <Footer />
       </body>
     </html>
