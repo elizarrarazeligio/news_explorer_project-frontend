@@ -2,14 +2,14 @@ import Api from "./Api";
 import { getToken } from "./token";
 
 interface IArticle {
-  _id: string;
-  keyword: string;
+  _id?: string;
+  keyword?: string;
   title: string;
   description: string;
   publishedAt: string;
-  source: string;
-  url: string;
   urlToImage: string;
+  source: string | { name: string };
+  url: string;
 }
 
 class SavedNewsApi extends Api {
@@ -29,7 +29,8 @@ class SavedNewsApi extends Api {
         title: data.title,
         description: data.description,
         publishedAt: data.publishedAt,
-        source: data.source,
+        source:
+          typeof data.source === "string" ? data.source : data.source.name,
         url: data.url,
         urlToImage: data.urlToImage,
       }),
