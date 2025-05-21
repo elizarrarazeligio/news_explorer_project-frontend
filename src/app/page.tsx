@@ -34,7 +34,6 @@ export default function Main() {
             enumerable: true,
           })
         );
-        console.log(articles);
         setNews(articles);
       })
       .catch((err) => setNews([]))

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { robotoSlab } from "@/vendor/fonts";
 import Link from "next/link";
-import { MouseEvent } from "react";
+import { MouseEvent, useContext } from "react";
 import { savedNewsApi } from "@/utils/SavedNewsApi";
 import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
+import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 
 interface NewsItemProps {
   _id?: string;
@@ -29,6 +30,7 @@ export default function NewsItem(props: NewsItemProps) {
     url,
   } = props;
 
+  const userContext = useContext(CurrentUserContext);
   const pathname = usePathname();
   const date = new Date(Date.parse(publishedAt));
 
@@ -42,6 +44,7 @@ export default function NewsItem(props: NewsItemProps) {
         .then((res) => toast.success(res.message))
         .catch((err) => toast.error(err.message));
     } else {
+      if (!userContext?.logged) return;
       savedNewsApi
         .saveArticle(props)
         .then((res) => toast.success(res.message))
@@ -62,7 +65,10 @@ export default function NewsItem(props: NewsItemProps) {
             fill={true}
             className="object-cover"
           />
-          <button className="news-item__button flex" onClick={handleClick}>
+          <button
+            className="news-item__button flex relative group"
+            onClick={handleClick}
+          >
             <Image
               src={_id ? "/trash.svg" : "/bookmark.svg"}
               alt=""
@@ -70,6 +76,13 @@ export default function NewsItem(props: NewsItemProps) {
               height={20}
               className="news-item__button-icon"
             />
+            {(!userContext?.logged || _id) && (
+              <span className="news-item__tooltip font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                {!userContext?.logged
+                  ? "Inicia sesión para guardar artículos"
+                  : "Eliminar noticia"}
+              </span>
+            )}
           </button>
         </div>
         <div className="news-item__info grid p-[24px] h-[304px]">

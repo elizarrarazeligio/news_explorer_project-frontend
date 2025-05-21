@@ -119,6 +119,18 @@
   filter: invert();
 }
 
+.news-item__tooltip {
+  position: absolute;
+  left: -5px;
+  padding: 10px;
+  transform: translateX(-100%);
+  border-radius: 10px;
+  background-color: var(--background-primary);
+  font-size: var(--font-size-xxsmall);
+  white-space: nowrap;
+  box-shadow: 0 0 1px var(--color-extra);
+}
+
 .news-item__info {
   gap: 12px;
   height: 304px;
