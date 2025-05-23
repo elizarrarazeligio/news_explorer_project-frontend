@@ -1,6 +1,10 @@
 import Api from "./Api";
 import { getToken } from "./token";
-import { IArticle, ArticleResponse } from "@/types/article";
+import {
+  IArticle,
+  ArticleResponse,
+  DeletedArticleResponse,
+} from "@/types/article";
 
 class SavedNewsApi extends Api {
   constructor({ baseUrl, headers }: { baseUrl: string; headers: {} }) {
@@ -27,7 +31,7 @@ class SavedNewsApi extends Api {
     });
   }
 
-  removeArticle(articleId: string): Promise<ArticleResponse> {
+  removeArticle(articleId: string): Promise<DeletedArticleResponse> {
     return super._makeRequest(`/articles/${articleId}`, {
       method: "DELETE",
       body: JSON.stringify({

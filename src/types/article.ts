@@ -1,7 +1,7 @@
 import { ApiResponse } from "./api";
 
 export interface IArticle {
-  _id?: string;
+  _id: string;
   keyword?: string;
   title: string;
   description: string;
@@ -15,4 +15,8 @@ export interface IArticle {
 
 export interface ArticleResponse extends ApiResponse {
   data: IArticle[];
+}
+
+export interface DeletedArticleResponse extends ApiResponse {
+  data: IArticle;
 }

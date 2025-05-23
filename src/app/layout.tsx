@@ -3,6 +3,7 @@ import { FC, PropsWithChildren } from "react";
 import { roboto } from "@/vendor/fonts";
 import { ToastContainer } from "react-toastify";
 import CurrentUserProvider from "@/contexts/CurrentUserProvider";
+import SavedArticlesProvider from "@/contexts/SavedArticlesProvider";
 import Footer from "@/components/Footer";
 import "@/styles/globals.css";
 
@@ -27,7 +28,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html>
       <body className={`${roboto.className} antialiased`}>
-        <CurrentUserProvider>{children}</CurrentUserProvider>
+        <CurrentUserProvider>
+          <SavedArticlesProvider>{children}</SavedArticlesProvider>
+        </CurrentUserProvider>
         <ToastContainer autoClose={1000} newestOnTop={true} />
         <Footer />
       </body>

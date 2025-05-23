@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 import { IArticle } from "@/types/article";
+import { SavedArticlesContext } from "@/contexts/SavedArticlesContext";
 
 export default function NewsItem(props: IArticle) {
   const {
@@ -21,6 +22,8 @@ export default function NewsItem(props: IArticle) {
   } = props;
 
   const userContext = useContext(CurrentUserContext);
+  const { setNewsLength, savedNews, setSavedNews } =
+    useContext(SavedArticlesContext);
   const pathname = usePathname();
   const date = new Date(Date.parse(publishedAt));
 
@@ -31,7 +34,14 @@ export default function NewsItem(props: IArticle) {
     if (_id) {
       savedNewsApi
         .removeArticle(_id)
-        .then((res) => toast.success(res.message))
+        .then((res) => {
+          const news = savedNews.filter(
+            (article) => article._id != res.data._id
+          );
+          setSavedNews(news);
+          setNewsLength(news.length);
+          toast.success(res.message);
+        })
         .catch((err) => toast.error(err.message));
     } else {
       if (!userContext?.logged) return;

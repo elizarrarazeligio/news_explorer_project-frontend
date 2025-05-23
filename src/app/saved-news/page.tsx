@@ -3,18 +3,20 @@
 import NewsHeader from "@/components/NewsHeader";
 import News from "@/components/News";
 import NotFound from "@/components/NotFound";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { savedNewsApi } from "@/utils/SavedNewsApi";
+import { SavedArticlesContext } from "@/contexts/SavedArticlesContext";
 
 export default function SavedNews() {
-  const [savedNews, setSavedNews] = useState([] as any[]);
+  const { savedNews, setSavedNews, newsLength } =
+    useContext(SavedArticlesContext);
 
   useEffect(() => {
     savedNewsApi
       .getArticles()
       .then((res) => setSavedNews(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [newsLength]);
 
   return (
     <>
