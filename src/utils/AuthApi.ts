@@ -1,24 +1,6 @@
 import Api from "./Api";
-
-interface ApiResponse {
-  status: string;
-  message: string;
-}
-
-interface LoginResponse extends ApiResponse {
-  token: string;
-  data: IUser;
-}
-
-interface IUser {
-  _id: string;
-  name: string;
-  email: string;
-}
-
-interface UserResponse extends ApiResponse {
-  data: IUser;
-}
+import { LoginResponse, UserResponse } from "@/types/user";
+import { ApiResponse } from "@/types/api";
 
 class AuthApi extends Api {
   constructor({ baseUrl, headers }: { baseUrl: string; headers: {} }) {

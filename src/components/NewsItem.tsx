@@ -6,19 +6,9 @@ import { savedNewsApi } from "@/utils/SavedNewsApi";
 import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
+import { IArticle } from "@/types/article";
 
-interface NewsItemProps {
-  _id?: string;
-  keyword?: string;
-  title: string;
-  description: string;
-  publishedAt: string;
-  urlToImage: string;
-  source: string | { name: string };
-  url: string;
-}
-
-export default function NewsItem(props: NewsItemProps) {
+export default function NewsItem(props: IArticle) {
   const {
     _id,
     keyword,

@@ -1,27 +1,17 @@
 import Api from "./Api";
 import { getToken } from "./token";
-
-interface IArticle {
-  _id?: string;
-  keyword?: string;
-  title: string;
-  description: string;
-  publishedAt: string;
-  urlToImage: string;
-  source: string | { name: string };
-  url: string;
-}
+import { IArticle, ArticleResponse } from "@/types/article";
 
 class SavedNewsApi extends Api {
   constructor({ baseUrl, headers }: { baseUrl: string; headers: {} }) {
     super({ baseUrl, headers });
   }
 
-  getArticles() {
+  getArticles(): Promise<ArticleResponse> {
     return super._makeRequest("/articles");
   }
 
-  saveArticle(data: IArticle) {
+  saveArticle(data: IArticle): Promise<ArticleResponse> {
     return super._makeRequest("/articles", {
       method: "POST",
       body: JSON.stringify({
@@ -37,7 +27,7 @@ class SavedNewsApi extends Api {
     });
   }
 
-  removeArticle(articleId: string) {
+  removeArticle(articleId: string): Promise<ArticleResponse> {
     return super._makeRequest(`/articles/${articleId}`, {
       method: "DELETE",
       body: JSON.stringify({

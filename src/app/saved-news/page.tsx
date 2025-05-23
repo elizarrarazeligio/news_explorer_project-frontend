@@ -8,7 +8,6 @@ import { savedNewsApi } from "@/utils/SavedNewsApi";
 
 export default function SavedNews() {
   const [savedNews, setSavedNews] = useState([] as any[]);
-  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     savedNewsApi

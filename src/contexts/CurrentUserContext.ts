@@ -1,14 +1,9 @@
 import { createContext } from "react";
-
-interface User {
-  _id?: number;
-  name?: string;
-  email?: string;
-}
+import { IUser } from "@/types/user";
 
 export interface CurrentUserContextType {
-  currentUser: User;
-  setCurrentUser: (currentUser: User) => void;
+  currentUser: IUser;
+  setCurrentUser: (currentUser: IUser) => void;
   logged: boolean;
   setLogged: (logged: boolean) => void;
 }
