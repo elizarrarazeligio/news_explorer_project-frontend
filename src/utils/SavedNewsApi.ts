@@ -1,17 +1,13 @@
 import Api from "./Api";
 import { getToken } from "./token";
-import {
-  IArticle,
-  ArticleResponse,
-  DeletedArticleResponse,
-} from "@/types/article";
+import { IArticle, ArticleResponse, ArticlesResponse } from "@/types/article";
 
 class SavedNewsApi extends Api {
   constructor({ baseUrl, headers }: { baseUrl: string; headers: {} }) {
     super({ baseUrl, headers });
   }
 
-  getArticles(): Promise<ArticleResponse> {
+  getArticles(): Promise<ArticlesResponse> {
     return super._makeRequest("/articles");
   }
 
@@ -31,7 +27,7 @@ class SavedNewsApi extends Api {
     });
   }
 
-  removeArticle(articleId: string): Promise<DeletedArticleResponse> {
+  removeArticle(articleId: string): Promise<ArticleResponse> {
     return super._makeRequest(`/articles/${articleId}`, {
       method: "DELETE",
       body: JSON.stringify({

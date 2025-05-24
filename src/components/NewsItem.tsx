@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { robotoSlab } from "@/vendor/fonts";
 import Link from "next/link";
-import { MouseEvent, useContext } from "react";
+import { MouseEvent, useContext, useEffect } from "react";
 import { savedNewsApi } from "@/utils/SavedNewsApi";
 import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
-import { IArticle } from "@/types/article";
+import { IArticle, ArticleResponse } from "@/types/article";
 import { SavedArticlesContext } from "@/contexts/SavedArticlesContext";
 
 export default function NewsItem(props: IArticle) {
@@ -27,6 +27,18 @@ export default function NewsItem(props: IArticle) {
   const pathname = usePathname();
   const date = new Date(Date.parse(publishedAt));
 
+  const handleSuccessMessage = (news: IArticle[], res: ArticleResponse) => {
+    setSavedNews(news);
+    setNewsLength(news.length);
+    toast.success(res.message);
+  };
+
+  const getImageIcon = (article: IArticle) => {
+    if (article._id) return "/trash.svg";
+    const saved = savedNews.find((news) => news.url === article.url);
+    return !article._id && !saved ? "/bookmark.svg" : "/bookmark_saved.svg";
+  };
+
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -38,16 +50,17 @@ export default function NewsItem(props: IArticle) {
           const news = savedNews.filter(
             (article) => article._id != res.data._id
           );
-          setSavedNews(news);
-          setNewsLength(news.length);
-          toast.success(res.message);
+          handleSuccessMessage(news, res);
         })
         .catch((err) => toast.error(err.message));
     } else {
       if (!userContext?.logged) return;
       savedNewsApi
         .saveArticle(props)
-        .then((res) => toast.success(res.message))
+        .then((res) => {
+          const news = [res.data, ...savedNews];
+          handleSuccessMessage(news, res);
+        })
         .catch((err) => toast.error(err.message));
     }
   };
@@ -70,8 +83,8 @@ export default function NewsItem(props: IArticle) {
             onClick={handleClick}
           >
             <Image
-              src={_id ? "/trash.svg" : "/bookmark.svg"}
-              alt=""
+              src={getImageIcon(props)}
+              alt="Image icon"
               width={20}
               height={20}
               className="news-item__button-icon"

@@ -13,10 +13,10 @@ export interface IArticle {
   updatedAt?: Date;
 }
 
-export interface ArticleResponse extends ApiResponse {
+export interface ArticlesResponse extends ApiResponse {
   data: IArticle[];
 }
 
-export interface DeletedArticleResponse extends ApiResponse {
+export interface ArticleResponse extends ApiResponse {
   data: IArticle;
 }
