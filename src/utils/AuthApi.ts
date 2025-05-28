@@ -42,7 +42,7 @@ class AuthApi extends Api {
 }
 
 export const authApi = new AuthApi({
-  baseUrl: "http://localhost:3005",
+  baseUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3005",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",

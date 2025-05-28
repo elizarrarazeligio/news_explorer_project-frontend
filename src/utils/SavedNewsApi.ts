@@ -38,7 +38,7 @@ class SavedNewsApi extends Api {
 }
 
 export const savedNewsApi = new SavedNewsApi({
-  baseUrl: "http://localhost:3005",
+  baseUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3005",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
