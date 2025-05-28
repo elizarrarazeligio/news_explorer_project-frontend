@@ -16,7 +16,7 @@ class NewsApi extends Api {
 
   searchNews(query: string): Promise<Object> {
     return super._makeRequest(
-      `/everything?from=${this._fromDate}&to=${this._toDate}&language=es&sortBy=publishedAt&q=${query}`
+      `&from=${this._fromDate}&to=${this._toDate}&language=es&sortBy=publishedAt&q=${query}`
     );
   }
 }
@@ -27,9 +27,14 @@ const toDate = currentDate.toISOString();
 currentDate.setDate(currentDate.getDate() - 7);
 const fromDate = currentDate.toISOString();
 
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_NEWS_API_PROXY_URL
+    : process.env.NEXT_PUBLIC_NEWS_API_URL;
+
 export const newsApi = new NewsApi(
   {
-    baseUrl: "https://newsapi.org/v2",
+    baseUrl: `${baseUrl}/everything?apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`,
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_API_KEY}`,
     },
