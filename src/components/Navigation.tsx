@@ -8,6 +8,7 @@ import Image from "next/image";
 
 export default function Navigation() {
   const pathname = usePathname();
+
   const [menu, setMenu] = useState(false as boolean);
   const [popup, setPopup] = useState<{
     title: string;
@@ -15,7 +16,9 @@ export default function Navigation() {
   } | null>(null);
 
   useEffect(() => {
-    document.addEventListener("keydown", () => setMenu(false));
+    document.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenu(false);
+    });
   }, []);
 
   const openPopup = (popup: { title: string; children: ReactNode }) => {
@@ -62,7 +65,7 @@ export default function Navigation() {
 
       {menu && (
         <nav className="navigation__menu-mobile flex flex-col w-full md:hidden font-medium">
-          <Menu openPopup={openPopup} />
+          <Menu openPopup={openPopup} menu={menu} />
         </nav>
       )}
 

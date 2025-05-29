@@ -1,15 +1,35 @@
 import "@/styles/form.css";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { inter } from "@/vendor/fonts";
+import { authApi } from "@/utils/AuthApi";
+import { toast } from "react-toastify";
+import { setToken } from "@/utils/token";
+import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 
 export default function Login() {
+  const userContext = useContext(CurrentUserContext);
+
   const [data, setData] = useState({
     email: "" as string,
     password: "" as string,
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    authApi
+      .login(data.email, data.password)
+      .then((res) => {
+        if (res.token) {
+          userContext?.setCurrentUser(res.data);
+          setToken(res.token);
+          toast.success(res.message);
+
+          setTimeout(() => {
+            window.location.href = "/saved-news";
+          }, 1000);
+        }
+      })
+      .catch((err) => toast.error(err.message));
   };
 
   const handleChange = (e: ChangeEvent) => {

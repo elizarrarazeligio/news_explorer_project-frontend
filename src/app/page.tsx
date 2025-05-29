@@ -28,9 +28,15 @@ export default function Main() {
     newsApi
       .searchNews(query)
       .then((res: any) => {
-        setNews(res.articles);
+        const articles = res.articles.map((article: any) =>
+          Object.defineProperty(article, "keyword", {
+            value: query,
+            enumerable: true,
+          })
+        );
+        setNews(articles);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => setNews([]))
       .finally(() => {
         setLoader(false);
         setSearch(false);

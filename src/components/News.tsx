@@ -4,10 +4,11 @@ import "@/styles/news.css";
 import { robotoSlab } from "@/vendor/fonts";
 import { ReactNode } from "react";
 import NewsItem from "./NewsItem";
+import { IArticle } from "@/types/article";
 
 interface NewsProps {
   title?: string;
-  news?: any[];
+  news: IArticle[];
   newsLength?: number;
   children?: ReactNode;
 }

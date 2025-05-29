@@ -7,12 +7,17 @@ export default class Api {
     this._headers = headers;
   }
 
-  _makeRequest(endpoint: string): Promise<any[]> {
-    return fetch(`${this._baseUrl}${endpoint}`, {
-      headers: this._headers,
-    }).then((res) => {
-      if (res.ok) return res.json();
-      return Promise.reject({ status: res.status, message: res.statusText });
+  async _makeRequest(endpoint: string, options?: RequestInit): Promise<any> {
+    const res = await fetch(`${this._baseUrl}${endpoint}`, {
+      method: options?.method || "GET",
+      headers: {
+        ...this._headers,
+        ...(options?.headers || {}),
+      },
+      body: options?.body || null,
     });
+
+    if (res.ok) return res.json();
+    return await Promise.reject(await res.json());
   }
 }
