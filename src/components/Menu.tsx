@@ -13,7 +13,7 @@ interface MenuProps {
 }
 
 export default function Menu({ openPopup, menu }: MenuProps) {
-  const userContext = useContext(CurrentUserContext);
+  const { logged, currentUser } = useContext(CurrentUserContext);
   const pathname = usePathname();
 
   const loginPopup = {
@@ -35,21 +35,17 @@ export default function Menu({ openPopup, menu }: MenuProps) {
     <>
       <ul className="navigation__list flex h-full">
         <NavItem title="Inicio" link="/" />
-        {userContext?.logged && (
-          <NavItem title="Artículos guardados" link="/saved-news" />
-        )}
+        {logged && <NavItem title="Artículos guardados" link="/saved-news" />}
       </ul>
 
       <button
         className="navigation__button flex py-[12px] px-[20px] rounded-full hover:bg-current transition-all duration-300 font-medium"
-        onClick={() =>
-          userContext?.logged ? handleLogout() : openPopup(loginPopup)
-        }
+        onClick={() => (logged ? handleLogout() : openPopup(loginPopup))}
       >
         <span className="navigation__button-text flex gap-[10px]">
-          {userContext?.logged ? (
+          {logged ? (
             <>
-              {getFirstName(userContext?.currentUser.name)}
+              {getFirstName(currentUser?.name)}
               <Image
                 src="/logout.svg"
                 alt="logout"

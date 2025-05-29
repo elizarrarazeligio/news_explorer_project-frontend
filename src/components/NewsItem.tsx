@@ -21,7 +21,7 @@ export default function NewsItem(props: IArticle) {
     url,
   } = props;
 
-  const userContext = useContext(CurrentUserContext);
+  const { logged } = useContext(CurrentUserContext);
   const { setNewsLength, savedNews, setSavedNews } =
     useContext(SavedArticlesContext);
   const pathname = usePathname();
@@ -54,7 +54,7 @@ export default function NewsItem(props: IArticle) {
         })
         .catch((err) => toast.error(err.message));
     } else {
-      if (!userContext?.logged) return;
+      if (!logged) return;
       savedNewsApi
         .saveArticle(props)
         .then((res) => {
@@ -89,9 +89,9 @@ export default function NewsItem(props: IArticle) {
               height={20}
               className="news-item__button-icon"
             />
-            {(!userContext?.logged || _id) && (
+            {(!logged || _id) && (
               <span className="news-item__tooltip font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-                {!userContext?.logged
+                {!logged
                   ? "Inicia sesión para guardar artículos"
                   : "Eliminar noticia"}
               </span>

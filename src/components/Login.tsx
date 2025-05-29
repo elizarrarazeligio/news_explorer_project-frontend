@@ -7,7 +7,7 @@ import { setToken } from "@/utils/token";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 
 export default function Login() {
-  const userContext = useContext(CurrentUserContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
 
   const [data, setData] = useState({
     email: "" as string,
@@ -20,7 +20,7 @@ export default function Login() {
       .login(data.email, data.password)
       .then((res) => {
         if (res.token) {
-          userContext?.setCurrentUser(res.data);
+          setCurrentUser(res.data);
           setToken(res.token);
           toast.success(res.message);
 

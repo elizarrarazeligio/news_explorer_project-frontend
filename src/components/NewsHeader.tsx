@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 
 export default function NewsHeader({ news }: { news: any[] }) {
-  const userContext = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   const keywords = [...new Set(news.map((article) => article.keyword))];
 
   const keywordsFormat = (keywords: string[]) => {
@@ -45,7 +45,7 @@ export default function NewsHeader({ news }: { news: any[] }) {
       <div className="news__main flex flex-col w-[530px]">
         <span className="news__subtitle">Artículos guardados</span>
         <h2 className={`news__title ${robotoSlab.className}`}>
-          {userContext?.currentUser.name?.split(" ")[0]},{" "}
+          {currentUser?.name?.split(" ")[0]},{" "}
           {news.length
             ? `tienes ${news.length} artículo(s) guardado(s).`
             : "no tienes ningún artículo guardado."}

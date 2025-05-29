@@ -11,10 +11,18 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript", "airbnb-base"],
+    extends: [
+      "next/core-web-vitals",
+      "next/typescript",
+      "airbnb-base",
+      "plugin:@typescript-eslint/recommended",
+    ],
+    plugins: ["@typescript-eslint"],
+    parser: "@typescript-eslint/parser",
     parserOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
+      project: "./tsconfig.json",
     },
   }),
 ];

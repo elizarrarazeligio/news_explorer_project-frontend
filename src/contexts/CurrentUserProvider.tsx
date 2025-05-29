@@ -13,9 +13,8 @@ export default function CurrentUserProvider({
 }: {
   children: ReactNode;
 }) {
-  const [currentUser, setCurrentUser] = useState<
-    CurrentUserContextType["currentUser"]
-  >({});
+  const [currentUser, setCurrentUser] =
+    useState<CurrentUserContextType["currentUser"]>(null);
   const [logged, setLogged] = useState(false);
 
   useEffect(() => {
