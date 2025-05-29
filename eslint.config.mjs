@@ -14,7 +14,6 @@ const eslintConfig = [
     extends: [
       "next/core-web-vitals",
       "next/typescript",
-      "airbnb-base",
       "plugin:@typescript-eslint/recommended",
     ],
     plugins: ["@typescript-eslint"],
@@ -22,7 +21,6 @@ const eslintConfig = [
     parserOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
-      project: "./tsconfig.json",
     },
   }),
 ];

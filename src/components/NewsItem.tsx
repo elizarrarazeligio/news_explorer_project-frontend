@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { robotoSlab } from "@/vendor/fonts";
 import Link from "next/link";
-import { MouseEvent, useContext, useEffect } from "react";
+import { MouseEvent, useContext } from "react";
 import { savedNewsApi } from "@/utils/SavedNewsApi";
 import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
@@ -90,7 +90,7 @@ export default function NewsItem(props: IArticle) {
               className="news-item__button-icon"
             />
             {(!logged || _id) && (
-              <span className="news-item__tooltip font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+              <span className="news-item__tooltip font-medium opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-200 pointer-events-none">
                 {!logged
                   ? "Inicia sesión para guardar artículos"
                   : "Eliminar noticia"}
