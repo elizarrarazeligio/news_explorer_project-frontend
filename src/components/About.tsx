@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section id="about" className="about flex px-[104px] py-[80px]">
       <Image
-        src="/about.jpg"
+        src="/aboutme.jpg"
         width={464}
         height={464}
         alt="Profile picture"
